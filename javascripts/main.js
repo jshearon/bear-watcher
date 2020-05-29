@@ -1,7 +1,7 @@
-import utils from './utils.js'
+import bears from './components/makeBears.js'
 
 const init = () => {
-
+  bears.makeBears();
 }
 
 init();
