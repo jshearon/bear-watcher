@@ -4,3 +4,7 @@
   object-fit: cover;
   object-position: center;
 }
+
+#open-bear-form, header {
+  width: 30rem;
+}
