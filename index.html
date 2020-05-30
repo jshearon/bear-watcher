@@ -8,23 +8,23 @@
   <title>Bear Watcher</title>
 </head>
 <body>
-  <h1>Bear Watcher</h1>
 
-  <div>
+  <header class="mx-auto text-center my-5">
+    <h1>Bear Watcher</h1>
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#open-bear-form" aria-expanded="false" aria-controls="collapseExample">
       Add A Bear!
     </button>
-  </div>
-  <div class="collapse" id="open-bear-form">
+  </header>
+  <div class="collapse mx-auto" id="open-bear-form">
     <div class="card card-body">
       <form id="bear-form">
         <div class="form-group">
           <label for="bear-name">Bear Name</label>
-          <input type="text" class="form-control" id="bear-name" aria-describedby="bearName">
+          <input type="text" class="form-control" name="bearName" aria-describedby="bearName">
         </div>
         <div class="form-group">
           <label for="bear-image">Bear Image Url</label>
-          <input type="text" class="form-control" id="bear-image">
+          <input type="text" class="form-control" name="bearImage">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
