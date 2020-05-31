@@ -1,9 +1,11 @@
 import bears from './components/makeBears.js';
 import bearForm from './components/bearForm.js';
+import trackFish from './components/trackFish.js';
 
 const init = () => {
   bears.makeBears();
-  bearForm.listeners();
+  bearForm.listener();
+  trackFish.listener();
 }
 
 init();
