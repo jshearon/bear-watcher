@@ -8,8 +8,8 @@ const addBear = (e) => {
   if (bearName && bearImage) {
     bears.setBears(bearName, bearImage);
     makeBears.makeBears();
-    $('#open-bear-form').html(`<h1 class="text-center">${bearName} has been added!</h1>`);
-    setTimeout(() => { $('#open-bear-form').collapse('hide') }, 3000);
+    alert(`${bearName} has been added!`);
+    setTimeout(() => { $('#open-bear-form').collapse('hide') }, 2000);
   } else {
     alert('Missing Info');
   }
