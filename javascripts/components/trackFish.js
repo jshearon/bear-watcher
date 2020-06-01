@@ -1,41 +1,33 @@
 import utils from "../helpers/utils.js";
-import bears from "../helpers/data/bears.js";
+import fish from "../helpers/data/fish.js";
 
-const fishingAttempts = [];
-
-const updateFishingLog = (bearId) => {
-  const fishingLog = fishingAttempts.filter(element => element.bearId === bearId);
+const updateFishLog = (bearId) => {
+  const fishLog = fish.getFish(bearId);
   let domString = '';
-  fishingLog.forEach(element => {
-    domString += `<li>${element.caught ? "Caught" : "Missed"} a fish at ${element.timeStamp.toLocaleString()}</li>`
+  fishLog.forEach(element => {
+    let theDate = new Date(element.timeStamp).toLocaleString()
+    domString += `<li>${element.caught ? "Caught" : "Missed"} a fish at ${theDate}</li>`
   });
-  if (domString === "") {
+  if (domString == '') {
     return "No attempts made";
   } else {
-    utils.printToDom(`#bear-${bearId}-log`, domString);
+    return domString;
   }
 }
 
-const trackFishingAttempts = (bearId, fishCaught) => {
-  const timeStamp = new Date();
-  const attempt = {
-    bearId: bearId,
-    caught: fishCaught != null ? true : false,
-    timeStamp: timeStamp
-  }
-  fishingAttempts.push(attempt);
-  updateFishingLog(bearId);
+const countFish = (bearId) => {
+  return fish.getFish(bearId).filter(element => element.caught == true).length + ` fish caught`;
 }
 
-const listener = () => {
+const fishButtons = () => {
   document.querySelector('#river').addEventListener('click', function(e) {
     if (!e.target) { return; }
     if (e.target.matches('.fishing')) {
-      trackFishingAttempts(e.target.dataset.bearId, e.target.dataset.fish);
+      fish.setFish(e.target.dataset.bearId, e.target.dataset.fish);
+      utils.printToDom(`#fish-count-${e.target.dataset.bearId}`, countFish(e.target.dataset.bearId));
+      utils.printToDom(`#bear-${e.target.dataset.bearId}-log`, updateFishLog(e.target.dataset.bearId));
     }
   });
 }
 
-
-
-export default { listener, updateFishingLog }
+export default { fishButtons, updateFishLog, countFish }

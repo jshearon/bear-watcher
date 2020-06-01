@@ -5,7 +5,7 @@ import trackFish from './components/trackFish.js';
 const init = () => {
   bears.makeBears();
   bearForm.listener();
-  trackFish.listener();
+  trackFish.fishButtons();
 }
 
 init();
